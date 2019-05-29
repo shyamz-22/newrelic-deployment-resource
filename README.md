@@ -49,7 +49,7 @@ jobs:
 
 - name: deploy
   plan:
-  - get: src # <-- *1 source code of deployed app
+  - get: src # <-- 🤓 source code of deployed app
     trigger: true
   - task: deploy
     config:
@@ -73,7 +73,7 @@ jobs:
   on_success:
     put: deployment-marker
     params:
-      git_src_directory: /tmp/build/put/src # <-- *1 
+      git_src_directory: /tmp/build/put/src # <-- 🤓
       app_id: ((app-id))
 
 ```

@@ -57,7 +57,7 @@ jobs:
       image_resource:
         type: docker-image
         source:
-          repository: vwdilab-docker.jfrog.io/alpine-bash-cf
+          repository: alpine
       inputs:
       - name: src
       run:

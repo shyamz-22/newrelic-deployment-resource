@@ -17,7 +17,8 @@ For this purpose provide a `git` resource in the put step so that NewRelic conco
 takes the revision  from `(SHA of origin/HEAD commit)` and description from `(Commit message of origin/HEAD commit)`.
 
 * `git_src_directory`: *Required.* source code of the deployed version. Format is `/tmp/put/build/<<name of git resource>>`
-* `app_id`: *Required.* Application ID from NewRelic
+* `api_url`: *Mandatory.* Deployment [REST api endpoint](https://rpm.newrelic.com/api/explore/application_deployments/create)  
+* `app_id`: *Optional* (`deprecated` in favour of api_url) Application ID from NewRelic, if `api_url` is not provided this defaults 
 
 ## Example Pipeline
 
@@ -74,7 +75,7 @@ jobs:
     put: deployment-marker
     params:
       git_src_directory: /tmp/build/put/src # <-- 🤓
-      app_id: ((app-id))
+      api_url: https://api.newrelic.com/v2/applications/((app-id))/deployments.json
 
 ```
 

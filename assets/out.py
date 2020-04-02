@@ -88,8 +88,14 @@ if __name__ == '__main__':
 
         sys.stderr.write(f'✅ Deployment marker added successfully: {response.status_code}\n')
         metadata = response.json()
+
+        if 'deployment' in metadata:
+            version_ref = str(metadata['deployment'].get('id'))
+        else:
+            version_ref = 'None'
+
         output = {
-            'version': {'ref': metadata['deployment'].get('id', None)},
+            'version': {'ref': version_ref},
             'metadata': [metadata]
         }
 

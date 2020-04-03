@@ -19,7 +19,7 @@ takes the **revision**  from `(SHA of origin/HEAD commit)` and **description** f
 
 * `git_src_directory`: *Required.* source code of the deployed version. Format is `/tmp/put/build/<<name of git resource>>`
 * `api_url`: *Mandatory.* Deployment [REST api endpoint](https://rpm.newrelic.com/api/explore/application_deployments/create)  
-* `app_id`: *Optional* (`deprecated` in favour of api_url) Application ID from NewRelic, if `api_url` is not provided this defaults to `US api endpoint`
+* `app_id`: *Optional* (`deprecated` in favour of api_url) Application ID from NewRelic, if `api_url` is not provided this defaults to **US API endpoint**
 
 ## Example Pipeline
 

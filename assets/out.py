@@ -40,6 +40,18 @@ def validate(source_values: Optional[dict], params_values: Optional[dict]) -> Va
     return ValidationResult(ok=True, error_message=None)
 
 
+def get_resource_output(metadata):
+    if metadata and 'deployment' in metadata:
+        version_ref = str(metadata['deployment'].get('id'))
+    else:
+        version_ref = 'None'
+
+    return {
+        'version': {'ref': version_ref},
+        'metadata': [metadata] if metadata else []
+    }
+
+
 if __name__ == '__main__':
     try:
         path_to_build = argv[1]
@@ -87,18 +99,8 @@ if __name__ == '__main__':
         response.raise_for_status()
 
         sys.stderr.write(f'✅ Deployment marker added successfully: {response.status_code}\n')
-        metadata = response.json()
 
-        if 'deployment' in metadata:
-            version_ref = str(metadata['deployment'].get('id'))
-        else:
-            version_ref = 'None'
-
-        output = {
-            'version': {'ref': version_ref},
-            'metadata': [metadata]
-        }
-
+        output = get_resource_output(metadata=response.json())
         print(json.dumps(output))
 
     except Exception as e:

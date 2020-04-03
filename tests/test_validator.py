@@ -1,6 +1,7 @@
 import unittest
 
 from assets import out
+from assets.out import get_resource_output
 
 
 class ValidatorTest(unittest.TestCase):
@@ -94,3 +95,57 @@ class ValidatorTest(unittest.TestCase):
 
         self.assertTrue(result.ok)
         self.assertIsNone(result.error_message)
+
+
+class ResourceOutputTest(unittest.TestCase):
+
+    def test_version_is_present(self):
+        # Given
+        metadata = {
+            'deployment': {
+                'id': 123456
+            }
+        }
+
+        # When
+        output = get_resource_output(metadata)
+
+        # Then
+        self.assertEqual('123456', output['version']['ref'])
+        self.assertEqual([metadata], output['metadata'])
+
+    def test_version_is_None(self):
+        # Given
+        metadata = {
+            'deployment': {
+
+            }
+        }
+
+        # When
+        output = get_resource_output(metadata)
+
+        # Then
+        self.assertEqual('None', output['version']['ref'])
+        self.assertEqual([metadata], output['metadata'])
+
+    def test_output_does_not_error(self):
+        # Given
+        metadata = None
+
+        # When
+        output = get_resource_output(metadata)
+
+        # Then
+        self.assertEqual('None', output['version']['ref'])
+        self.assertEqual([], output['metadata'])
+
+        # Given
+        metadata = {}
+
+        # When
+        output = get_resource_output(metadata)
+
+        # Then
+        self.assertEqual('None', output['version']['ref'])
+        self.assertEqual([], output['metadata'])

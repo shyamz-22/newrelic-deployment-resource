@@ -1,3 +1,4 @@
+![Docker](https://dockeri.co/image/shyamz22/newrelic-resource)
 # Newrelic Resource for Concourse
 An output only opinionated concourse resource for adding deployment markers in newrelic
 

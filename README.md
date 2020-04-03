@@ -1,8 +1,8 @@
 ![Docker](https://dockeri.co/image/shyamz22/newrelic-resource)
-# Newrelic Resource for Concourse
-An output only opinionated concourse resource for adding deployment markers in newrelic
+# New Relic Resource for Concourse
+An output only opinionated concourse resource for adding deployment markers in New Relic
 
-## Newrelic Deployment markers
+## New Relic Deployment markers
 
 Details of Deployment markers can be found [here](https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/record-deployments)
 
@@ -20,7 +20,7 @@ takes the **revision**  from `(SHA of origin/HEAD commit)` and **description** f
 
 * `git_src_directory`: *Required.* source code of the deployed version. Format is `/tmp/put/build/<<name of git resource>>`
 * `api_url`: *Mandatory.* Deployment [REST api endpoint](https://rpm.newrelic.com/api/explore/application_deployments/create)  
-* `app_id`: *Optional* (`deprecated` in favour of api_url) Application ID from NewRelic, if `api_url` is not provided this defaults to **US API endpoint**
+* `app_id`: *Optional* (`deprecated` in favour of api_url) Application ID from New Relic, if `api_url` is not provided this defaults to **US API endpoint**
 
 ## Example Pipeline
 

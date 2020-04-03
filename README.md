@@ -12,13 +12,14 @@ Details of Deployment markers can be found [here](https://docs.newrelic.com/docs
 
 ## `out`: Add a deployment marker
 
-In order to add an deployment marker, a revision number and a description may be provided to the newrelic API.
-For this purpose provide a `git` resource in the put step so that NewRelic concourse resource
-takes the revision  from `(SHA of origin/HEAD commit)` and description from `(Commit message of origin/HEAD commit)`.
+In order to add an deployment marker, a revision number and a description may be provided to the New Relic API.
+
+For this purpose provide a `git` resource in the put step so that New Relic concourse resource
+takes the **revision**  from `(SHA of origin/HEAD commit)` and **description** from `(Commit message of origin/HEAD commit)`.
 
 * `git_src_directory`: *Required.* source code of the deployed version. Format is `/tmp/put/build/<<name of git resource>>`
 * `api_url`: *Mandatory.* Deployment [REST api endpoint](https://rpm.newrelic.com/api/explore/application_deployments/create)  
-* `app_id`: *Optional* (`deprecated` in favour of api_url) Application ID from NewRelic, if `api_url` is not provided this defaults 
+* `app_id`: *Optional* (`deprecated` in favour of api_url) Application ID from NewRelic, if `api_url` is not provided this defaults to `US api endpoint`
 
 ## Example Pipeline
 
